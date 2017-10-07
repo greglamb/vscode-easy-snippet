@@ -1,0 +1,42 @@
+{
+    "name": "easy-snippet",
+    "displayName": "easy-snippet",
+    "description": "make what you select as a snippet",
+    "version": "0.0.1",
+    "publisher": "inu1255",
+    "engines": {
+        "vscode": "^1.16.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:easySnippet.run"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+            "command": "easySnippet.run",
+            "title": "make snippet"
+        }],
+        "keybindings": [
+          {
+            "command": "easySnippet.run",
+            "key": "alt+. alt+s",
+            "mac": "cmd+. cmd+s"
+          }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.5",
+        "mocha": "^3.5.0",
+        "eslint": "^4.6.1",
+        "@types/node": "^7.0.0",
+        "@types/mocha": "^2.2.42"
+    }
+}
