@@ -1,42 +1,190 @@
 {
-    "name": "easy-snippet",
-    "displayName": "easy-snippet",
-    "description": "make what you select as a snippet",
-    "version": "0.0.1",
-    "publisher": "inu1255",
-    "engines": {
-        "vscode": "^1.16.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:easySnippet.run"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "commands": [{
-            "command": "easySnippet.run",
-            "title": "make snippet"
-        }],
-        "keybindings": [
-          {
-            "command": "easySnippet.run",
-            "key": "alt+. alt+s",
-            "mac": "cmd+. cmd+s"
-          }
-        ]
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.5.2",
-        "vscode": "^1.1.5",
-        "mocha": "^3.5.0",
-        "eslint": "^4.6.1",
-        "@types/node": "^7.0.0",
-        "@types/mocha": "^2.2.42"
-    }
+	"name": "easy-snippet",
+	"displayName": "easy-snippet",
+	"description": "make what you select as a snippet",
+	"version": "0.1.0",
+	"publisher": "inu1255",
+	"engines": {
+		"vscode": "^1.16.0"
+	},
+	"categories": ["Other"],
+	"activationEvents": ["onCommand:easySnippet.run", "onCommand:snippetExplorer.open", "onView:snippetExplorer"],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "easySnippet.run",
+				"title": "create snippet by select",
+				"category": "ES"
+			},
+			{
+				"command": "snippetExplorer.open",
+				"title": "open snippet view",
+				"category": "ES"
+			},
+			{
+				"command": "snippetExplorer.refresh",
+				"title": "Refresh",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.addGroup",
+				"title": "Add Group",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.addSnippet",
+				"title": "Add Snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.editGroup",
+				"title": "Edit Group",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.deleteGroup",
+				"title": "Delete Group",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/delete.svg",
+					"dark": "resources/dark/delete.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.deleteSnippet",
+				"title": "Delete Snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/delete.svg",
+					"dark": "resources/dark/delete.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.editSnippet",
+				"title": "Edit Snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			}
+		],
+		"keybindings": [
+			{
+				"command": "easySnippet.run",
+				"key": "alt+. alt+s",
+				"mac": "cmd+. cmd+s"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "snippet-explorer",
+					"title": "Snippet",
+					"icon": "media/snippet.svg"
+				}
+			]
+		},
+		"views": {
+			"snippet-explorer": [
+				{
+					"id": "snippetExplorer",
+					"name": "Snippet Manage"
+				}
+			]
+		},
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "easySnippet.run",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "snippetExplorer.addSnippet",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.editGroup",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.deleteGroup",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.deleteSnippet",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.editSnippet",
+					"when": "1 == 2"
+				}
+			],
+			"view/title": [
+				{
+					"command": "snippetExplorer.refresh",
+					"when": "view == snippetExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "snippetExplorer.addGroup",
+					"when": "view == snippetExplorer",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "snippetExplorer.addSnippet",
+					"when": "view == snippetExplorer && viewItem == group",
+					"group": "inline@1"
+				},
+				{
+					"command": "snippetExplorer.editGroup",
+					"when": "view == snippetExplorer && viewItem == group",
+					"group": "inline@2"
+				},
+				{
+					"command": "snippetExplorer.deleteGroup",
+					"when": "view == snippetExplorer && viewItem == group",
+					"group": "inline@3"
+				},
+				{
+					"command": "snippetExplorer.deleteSnippet",
+					"when": "view == snippetExplorer && viewItem == snippet",
+					"group": "inline"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.0.0",
+		"mocha": "^3.5.0",
+		"typescript": "^2.5.2",
+		"vscode": "^1.1.30"
+	},
+	"dependencies": {
+		"@types/vscode": "^1.17.0"
+	}
 }
