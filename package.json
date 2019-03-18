@@ -2,11 +2,12 @@
 	"name": "easy-snippet",
 	"displayName": "easy-snippet",
 	"description": "make what you select as a snippet",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"publisher": "inu1255",
 	"engines": {
 		"vscode": "^1.16.0"
 	},
+	"icon": "media/logo.png",
 	"categories": ["Other"],
 	"activationEvents": ["onCommand:easySnippet.run", "onCommand:snippetExplorer.open", "onView:snippetExplorer"],
 	"main": "./extension",
@@ -186,5 +187,9 @@
 	},
 	"dependencies": {
 		"@types/vscode": "^1.17.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/inu1255/vscode-easy-snippet"
 	}
 }
