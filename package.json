@@ -2,14 +2,20 @@
 	"name": "easy-snippet",
 	"displayName": "easy-snippet",
 	"description": "make what you select as a snippet",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"publisher": "inu1255",
 	"engines": {
 		"vscode": "^1.16.0"
 	},
 	"icon": "media/logo.png",
-	"categories": ["Other"],
-	"activationEvents": ["onCommand:easySnippet.run", "onCommand:snippetExplorer.open", "onView:snippetExplorer"],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:easySnippet.run",
+		"onCommand:snippetExplorer.open",
+		"onView:snippetExplorer"
+	],
 	"main": "./extension",
 	"contributes": {
 		"commands": [
