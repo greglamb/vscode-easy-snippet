@@ -179,18 +179,14 @@ class SnippetNodeProvider {
 		let body = "";
 		for (let i = 0; i < lines.length; i++) {
 			if (lines[i] == '/* eslint-disable */') {
-				if (lines[i].trim() === "")
-					body = lines.slice(i + 2);
-				else
-					body = lines.slice(i + 1);
+				body = lines.slice(i + 1);
+				while (body[0] == '') body.shift();
 				lines = lines.slice(0, i);
 				break;
 			}
 			if (!lines[i].startsWith(comment)) {
-				if (lines[i].trim() === "")
-					body = lines.slice(i + 1);
-				else
-					body = lines.slice(i);
+				body = lines.slice(i);
+				while (body[0] == '') body.shift();
 				lines = lines.slice(0, i);
 				break;
 			}
@@ -214,8 +210,8 @@ class SnippetNodeProvider {
 	snippet2text(snippet, languageId) {
 		let comment = utils.getLineComment(languageId);
 		let text = "";
-		
-		for (let k of ["prefix","description"]) {
+
+		for (let k of ["prefix", "description"]) {
 			if (k == "body") continue;
 			let v = snippet[k] || '';
 			for (let item of v.split('\n')) {
