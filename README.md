@@ -1,12 +1,12 @@
 # easy-snippet
 
-make what select as snippet
+another easy way to manage snippet
 
 ## Features
 
-1. make what select as snippet
-2. snippet tree view
-3. no langer suffer from json format
+- Auto-detects language
+- Easily edit and delete snippets once created
+- View, edit, and remove snippet groups from a dedicated snippet manager
 
 ![1](media/screenshot.png)
 ![2](media/screenshot.gif)
@@ -14,6 +14,10 @@ make what select as snippet
 default keymaps `cmd+. cmd+s`
 
 ## Release Notes
+
+### 0.1.5
+
+surport insiders version, improve the marketplace listing 
 
 ### 0.0.1
 

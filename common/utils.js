@@ -4,18 +4,20 @@ const path = require("path");
 const fs = require("fs");
 
 let vsCodeUserSettingsPath;
+let isInsiders = /Insiders/.test(process.argv0);
+let CodeDir = isInsiders?'Code - Insiders':'Code';
 switch (os.type()) {
     case "Darwin":
-        vsCodeUserSettingsPath = process.env.HOME + "/Library/Application Support/Code/User/";
+        vsCodeUserSettingsPath = process.env.HOME + `/Library/Application Support/${CodeDir}/User/`;
         break;
     case "Linux":
-        vsCodeUserSettingsPath = process.env.HOME + "/.config/Code/User/";
+        vsCodeUserSettingsPath = process.env.HOME + `/.config/${CodeDir}/User/`;
         break;
     case "Windows_NT":
-        vsCodeUserSettingsPath = process.env.APPDATA + "\\Code\\User\\";
+        vsCodeUserSettingsPath = process.env.APPDATA + `\\${CodeDir}\\User\\`;
         break;
     default:
-        vsCodeUserSettingsPath = process.env.HOME + "/.config/Code/User/";
+        vsCodeUserSettingsPath = process.env.HOME + `/.config/${CodeDir}/User/`;
         break;
 }
 let vsCodeSnippetsPath = path.join(vsCodeUserSettingsPath, 'snippets');
