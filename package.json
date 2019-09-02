@@ -2,7 +2,7 @@
 	"name": "easy-snippet",
 	"displayName": "easy-snippet",
 	"description": "make what you select as a snippet",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"publisher": "inu1255",
 	"engines": {
 		"vscode": "^1.16.0"
@@ -11,8 +11,9 @@
 	"categories": [
 		"Snippets"
 	],
-	"tags": [
-		"create snippets", "snippet generator"
+	"keywords": [
+		"create snippets",
+		"snippet generator"
 	],
 	"activationEvents": [
 		"onCommand:easySnippet.run",
@@ -99,8 +100,8 @@
 		"keybindings": [
 			{
 				"command": "easySnippet.run",
-				"key": "alt+. alt+s",
-				"mac": "cmd+. cmd+s"
+				"key": "ctrl+k shift+ctrl+s",
+				"mac": "cmd+k shift+cmd+s"
 			}
 		],
 		"viewsContainers": {

@@ -81,7 +81,7 @@ const utils = {
                     _packageLangData => (_packageLangData.id === languageId)
                 );
                 // If found, get the absolute config file path
-                if (!!packageLangData) {
+                if (packageLangData && packageLangData.configuration) {
                     langConfigFilepath = path.join(
                         _ext.extensionPath,
                         packageLangData.configuration

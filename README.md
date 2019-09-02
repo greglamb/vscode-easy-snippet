@@ -11,13 +11,17 @@ another easy way to manage snippet
 ![1](media/screenshot.png)
 ![2](media/screenshot.gif)
 
-default keymaps `cmd+. cmd+s`
+default keymaps `cmd+k shift+cmd+s`
 
 ## Release Notes
 
+### 0.1.6
+
+change default keymaps `cmd+. cmd+s` to `cmd+k shift+cmd+s`, [issue#5](https://github.com/inu1255/vscode-easy-snippet/issues/5)
+
 ### 0.1.5
 
-surport insiders version, improve the marketplace listing 
+support insiders version, improve the marketplace listing 
 
 ### 0.0.1
 
