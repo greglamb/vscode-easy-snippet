@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 
 let vsCodeUserSettingsPath;
-let isInsiders = /Insiders/.test(process.argv0);
+let isInsiders = /insiders/i.test(process.argv0);
 let CodeDir = isInsiders?'Code - Insiders':'Code';
 switch (os.type()) {
     case "Darwin":
