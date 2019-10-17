@@ -5,7 +5,8 @@ const fs = require("fs");
 
 let vsCodeUserSettingsPath;
 let isInsiders = /insiders/i.test(process.argv0);
-let CodeDir = isInsiders?'Code - Insiders':'Code';
+let isCodium = /codium/i.test(process.argv0);                                  
+let CodeDir = isInsiders?'Code - Insiders':isCodium?'VSCodium':'Code';
 switch (os.type()) {
     case "Darwin":
         vsCodeUserSettingsPath = process.env.HOME + `/Library/Application Support/${CodeDir}/User/`;
