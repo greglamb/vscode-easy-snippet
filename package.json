@@ -101,7 +101,8 @@
 			{
 				"command": "easySnippet.run",
 				"key": "ctrl+k shift+ctrl+s",
-				"mac": "cmd+k shift+cmd+s"
+				"mac": "cmd+k shift+cmd+s",
+				"when": "editorTextFocus"
 			}
 		],
 		"viewsContainers": {
