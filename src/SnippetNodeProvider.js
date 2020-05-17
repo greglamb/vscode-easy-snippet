@@ -46,6 +46,20 @@ class SnippetNodeProvider {
 		return this.caches[languageId] = cache;
 	}
 
+	async search() {
+		let languageId = await utils.pickLanguage()
+		if(!languageId) return;
+		if(!this.caches[languageId])
+			this.getSnippets(languageId)
+		if(!this.caches[languageId])
+			return vscode.window.showErrorMessage(`no snippet in language: ${languageId}`)
+		let list = this.caches[languageId].list
+		let item = await vscode.window.showQuickPick(list, { placeHolder: '' });
+		let key = item.label;
+		this.tree.reveal({ languageId, label: key });
+		this.editSnippet({key, languageId})
+	}
+
 	getSnippet(languageId, key) {
 		let cache = this.getSnippets(languageId);
 		return cache.data[key];
@@ -89,32 +103,22 @@ class SnippetNodeProvider {
 	}
 
 	async addGroup() {
-		let languages = await vscode.languages.getLanguages();
-		let currentLanguage = vscode.window.activeTextEditor.document.languageId;
-		let items = languages.map(x => {
-			let description;
-			let label = x;
-			if (x === currentLanguage) description = 'current language';
-			return { label, description };
-		});
-		if (currentLanguage) items.sort((a, b) => {
-			if (a.description) return -1;
-			if (b.description) return 1;
-			return a.label > b.label ? -1 : 1;
-		});
-		let select = await vscode.window.showQuickPick(items, { placeHolder: currentLanguage });
-		if (!select) return;
-		let filename = this.snippetPath(select.label);
-		if (fs.existsSync(filename))
-			vscode.window.showInformationMessage(`snippets file "${select.label}.json" exists`);
-		else
+		let languageId = await utils.pickLanguage()
+		if (!languageId) return;
+		let filename = this.snippetPath(languageId);
+		if (!fs.existsSync(filename))
 			fs.writeFileSync(filename, '{}');
 		this.refresh();
+		this.addSnippet({lable:languageId})
 	}
 	/**
 	 * @param {{lable:string}} e 
 	 */
 	async addSnippet(e, def) {
+		if(!def) {
+			let text = utils.getSelectedText()
+			if(text) def = { body: text.replace(/\$/g, '\\$') }
+		}
 		let languageId = e.label;
 		let key = await vscode.window.showInputBox({ placeHolder: 'snippet key' });
 		if (key) {
@@ -152,19 +156,23 @@ class SnippetNodeProvider {
 	 * @param {Snippet} def new snippet template
 	 */
 	async editSnippet(e, def) {
+		def = Object.assign({ prefix: e.key, body: "" }, def);
+		let snippet = this.getSnippet(e.languageId, e.key);
+		if (!snippet) snippet = def;
+		if (!snippet.prefix) snippet.prefix = def.prefix;
+		let text = this.snippet2text(snippet, e.languageId);
+
 		let filename = path.join(os.tmpdir(), Buffer.from(e.key).toString('base64').replace(/\//g, '-') + '.' + e.languageId + '.snippet');
+		let content
 		if (!fs.existsSync(filename))
-			fs.writeFileSync(filename, '');
+			fs.writeFileSync(filename, content = text);
 		let editor = await vscode.window.showTextDocument(vscode.Uri.file(filename));
-		if (editor.document.isDirty) return;
 		await vscode.languages.setTextDocumentLanguage(editor.document, e.languageId);
+		let range = utils.selectAllRange(editor.document);
+		if(content==null)
+		content = editor.document.getText(range)
+		if(content==text) return;
 		await editor.edit((eb) => {
-			def = Object.assign({ prefix: e.key, body: "" }, def);
-			let snippet = this.getSnippet(e.languageId, e.key);
-			if (!snippet) snippet = def;
-			if (!snippet.prefix) snippet.prefix = def.prefix;
-			let text = this.snippet2text(snippet, e.languageId);
-			let range = utils.selectAllRange(editor.document);
 			eb.replace(range, text);
 		});
 		editor.selection = utils.endSelection(editor.document);

@@ -108,6 +108,23 @@ const utils = {
     },
     vsCodeUserSettingsPath,
     vsCodeSnippetsPath,
+    async pickLanguage() {
+		let languages = await vscode.languages.getLanguages();
+		let currentLanguage = vscode.window.activeTextEditor && vscode.window.activeTextEditor.document.languageId;
+		let items = languages.map(x => {
+			let description;
+			let label = x;
+			if (x === currentLanguage) description = 'current language';
+			return { label, description };
+		});
+		if (currentLanguage) items.sort((a, b) => {
+			if (a.description) return -1;
+			if (b.description) return 1;
+			return a.label > b.label ? -1 : 1;
+		});
+        let item = await vscode.window.showQuickPick(items, { placeHolder: currentLanguage });
+        return item && item.label;
+    }
 };
 
 module.exports = utils;

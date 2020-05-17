@@ -34,6 +34,15 @@
 				"category": "ES"
 			},
 			{
+				"command": "snippetExplorer.search",
+				"title": "search snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/search.svg",
+					"dark": "resources/dark/search.svg"
+				}
+			},
+			{
 				"command": "snippetExplorer.refresh",
 				"title": "Refresh",
 				"category": "ES",
@@ -150,6 +159,11 @@
 				}
 			],
 			"view/title": [
+				{
+					"command": "snippetExplorer.search",
+					"when": "view == snippetExplorer",
+					"group": "navigation"
+				},
 				{
 					"command": "snippetExplorer.refresh",
 					"when": "view == snippetExplorer",

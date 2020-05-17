@@ -19,6 +19,7 @@ function activate(context) {
         vscode.commands.registerCommand('snippetExplorer.deleteGroup', provider.deleteGroup.bind(provider)),
         vscode.commands.registerCommand('snippetExplorer.deleteSnippet', provider.deleteSnippet.bind(provider)),
         vscode.commands.registerCommand('snippetExplorer.editSnippet', provider.editSnippet.bind(provider)),
+        vscode.commands.registerCommand('snippetExplorer.search',provider.search.bind(provider)),
         vscode.commands.registerCommand('snippetExplorer.open', function() {
             explorer.reveal(provider.getChildren()[0]);
         }),
@@ -26,8 +27,7 @@ function activate(context) {
             let text = utils.getSelectedText();
             if (!text) return vscode.window.showWarningMessage("can't convert to snippet by select nothing");
             let label = vscode.window.activeTextEditor.document.languageId;
-            let snippet = { body: text };
-            provider.addSnippet({ label }, snippet);
+            provider.addSnippet({ label });
         }),
         vscode.workspace.onDidSaveTextDocument(function(e) {
             if (e.fileName.endsWith('.json') && e.fileName.startsWith(utils.vsCodeSnippetsPath))
