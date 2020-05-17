@@ -7,19 +7,24 @@ let vsCodeUserSettingsPath;
 let isInsiders = /insiders/i.test(process.argv0);
 let isCodium = /codium/i.test(process.argv0);                                  
 let CodeDir = isInsiders?'Code - Insiders':isCodium?'VSCodium':'Code';
-switch (os.type()) {
-    case "Darwin":
-        vsCodeUserSettingsPath = process.env.HOME + `/Library/Application Support/${CodeDir}/User/`;
-        break;
-    case "Linux":
-        vsCodeUserSettingsPath = process.env.HOME + `/.config/${CodeDir}/User/`;
-        break;
-    case "Windows_NT":
-        vsCodeUserSettingsPath = process.env.APPDATA + `\\${CodeDir}\\User\\`;
-        break;
-    default:
-        vsCodeUserSettingsPath = process.env.HOME + `/.config/${CodeDir}/User/`;
-        break;
+let isPortable = process.env.VSCODE_PORTABLE ? true : false;
+if (isPortable) {
+    vsCodeUserSettingsPath = process.env.VSCODE_PORTABLE + `/user-data/User/`;
+} else {
+    switch (os.type()) {
+        case "Darwin":
+            vsCodeUserSettingsPath = process.env.HOME + `/Library/Application Support/${CodeDir}/User/`;
+            break;
+        case "Linux":
+            vsCodeUserSettingsPath = process.env.HOME + `/.config/${CodeDir}/User/`;
+            break;
+        case "Windows_NT":
+            vsCodeUserSettingsPath = process.env.APPDATA + `\\${CodeDir}\\User\\`;
+            break;
+        default:
+            vsCodeUserSettingsPath = process.env.HOME + `/.config/${CodeDir}/User/`;
+            break;
+    }    
 }
 let vsCodeSnippetsPath = path.join(vsCodeUserSettingsPath, 'snippets');
 let json_caches = {};
