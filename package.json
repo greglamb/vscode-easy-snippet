@@ -2,7 +2,7 @@
 	"name": "easy-snippet",
 	"displayName": "easy-snippet",
 	"description": "make what you select as a snippet",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"publisher": "inu1255",
 	"engines": {
 		"vscode": "^1.16.0"
@@ -21,7 +21,9 @@
 		"onView:snippetExplorer"
 	],
 	"main": "./extension",
-	"extensionKind": ["ui"],
+	"extensionKind": [
+		"ui"
+	],
 	"contributes": {
 		"commands": [
 			{
