@@ -21,6 +21,7 @@
 		"onView:snippetExplorer"
 	],
 	"main": "./extension",
+	"extensionKind": ["ui"],
 	"contributes": {
 		"commands": [
 			{
