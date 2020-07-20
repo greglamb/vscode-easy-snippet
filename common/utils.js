@@ -76,9 +76,7 @@ const utils = {
         // reference https://github.com/Microsoft/vscode/issues/2871#issuecomment-338364014
         var langConfigFilepath = null;
         for (const _ext of vscode.extensions.all) {
-            // All vscode default extensions ids starts with "vscode."
             if (
-                _ext.id.startsWith("vscode.") &&
                 _ext.packageJSON.contributes &&
                 _ext.packageJSON.contributes.languages
             ) {
