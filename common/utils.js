@@ -6,7 +6,8 @@ const fs = require("fs");
 let vsCodeUserSettingsPath;
 let isInsiders = /insiders/i.test(process.argv0);
 let isCodium = /codium/i.test(process.argv0);                                  
-let CodeDir = isInsiders?'Code - Insiders':isCodium?'VSCodium':'Code';
+let isOSS = /vscode-oss/i.test(__dirname);
+let CodeDir = isInsiders?'Code - Insiders':isCodium?'VSCodium':isOSS?'Code - OSS':'Code';
 let isPortable = process.env.VSCODE_PORTABLE ? true : false;
 if (isPortable) {
     vsCodeUserSettingsPath = process.env.VSCODE_PORTABLE + `/user-data/User/`;
