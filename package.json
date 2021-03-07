@@ -2,7 +2,7 @@
 	"name": "easy-snippet",
 	"displayName": "Easy Snippet",
 	"description": "Turn your selection into a snippet",
-	"version": "0.6.2",
+	"version": "0.6.3",
 	"publisher": "inu1255",
 	"engines": {
 		"vscode": "^1.16.0"
