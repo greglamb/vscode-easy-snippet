@@ -1,7 +1,7 @@
 {
 	"name": "easy-snippet",
-	"displayName": "easy-snippet",
-	"description": "make what you select as a snippet",
+	"displayName": "Easy Snippet",
+	"description": "Turn your selection into a snippet",
 	"version": "0.6.2",
 	"publisher": "inu1255",
 	"engines": {
@@ -28,18 +28,18 @@
 		"commands": [
 			{
 				"command": "easySnippet.run",
-				"title": "create snippet by select",
-				"category": "ES"
+				"title": "Create Snippet from Selection",
+				"category": "Easy Snippet"
 			},
 			{
 				"command": "snippetExplorer.open",
-				"title": "open snippet view",
-				"category": "ES"
+				"title": "Open Snippet View",
+				"category": "Easy Snippet"
 			},
 			{
 				"command": "snippetExplorer.search",
-				"title": "search snippet",
-				"category": "ES",
+				"title": "Search",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/search.svg",
 					"dark": "resources/dark/search.svg"
@@ -48,7 +48,7 @@
 			{
 				"command": "snippetExplorer.refresh",
 				"title": "Refresh",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/refresh.svg",
 					"dark": "resources/dark/refresh.svg"
@@ -57,7 +57,7 @@
 			{
 				"command": "snippetExplorer.addGroup",
 				"title": "Add Group",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/add.svg",
 					"dark": "resources/dark/add.svg"
@@ -66,7 +66,7 @@
 			{
 				"command": "snippetExplorer.addSnippet",
 				"title": "Add Snippet",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/add.svg",
 					"dark": "resources/dark/add.svg"
@@ -75,7 +75,7 @@
 			{
 				"command": "snippetExplorer.editGroup",
 				"title": "Edit Group",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/edit.svg",
 					"dark": "resources/dark/edit.svg"
@@ -84,7 +84,7 @@
 			{
 				"command": "snippetExplorer.deleteGroup",
 				"title": "Delete Group",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/delete.svg",
 					"dark": "resources/dark/delete.svg"
@@ -93,7 +93,7 @@
 			{
 				"command": "snippetExplorer.deleteSnippet",
 				"title": "Delete Snippet",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/delete.svg",
 					"dark": "resources/dark/delete.svg"
@@ -102,7 +102,7 @@
 			{
 				"command": "snippetExplorer.editSnippet",
 				"title": "Edit Snippet",
-				"category": "ES",
+				"category": "Easy Snippet",
 				"icon": {
 					"light": "resources/light/edit.svg",
 					"dark": "resources/dark/edit.svg"
@@ -130,7 +130,7 @@
 			"snippet-explorer": [
 				{
 					"id": "snippetExplorer",
-					"name": "Snippet Manage"
+					"name": "Snippet Manager"
 				}
 			]
 		},
