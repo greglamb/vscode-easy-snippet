@@ -109,10 +109,10 @@ class SnippetNodeProvider {
 		if (!fs.existsSync(filename))
 			fs.writeFileSync(filename, '{}');
 		this.refresh();
-		this.addSnippet({lable:languageId})
+		this.addSnippet({label:languageId})
 	}
 	/**
-	 * @param {{lable:string}} e 
+	 * @param {{label:string}} e 
 	 */
 	async addSnippet(e, def) {
 		if(!def) {
