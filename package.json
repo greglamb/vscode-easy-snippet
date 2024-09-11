@@ -2,10 +2,10 @@
 	"name": "easy-snippet",
 	"displayName": "Easy Snippet",
 	"description": "Turn your selection into a snippet",
-	"version": "0.6.3",
+	"version": "0.7.5",
 	"publisher": "inu1255",
 	"engines": {
-		"vscode": "^1.16.0"
+		"vscode": "^1.32.0"
 	},
 	"icon": "media/logo.png",
 	"categories": [
@@ -25,10 +25,9 @@
 		"ui"
 	],
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "easySnippet.run",
-				"title": "Create Snippet from Selection",
+				"title": "Add Snippet From Selection",
 				"category": "Easy Snippet"
 			},
 			{
@@ -100,6 +99,15 @@
 				}
 			},
 			{
+				"command": "snippetExplorer.renameSnippet",
+				"title": "Rename Snippet",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
 				"command": "snippetExplorer.editSnippet",
 				"title": "Edit Snippet",
 				"category": "Easy Snippet",
@@ -107,62 +115,154 @@
 					"light": "resources/light/edit.svg",
 					"dark": "resources/dark/edit.svg"
 				}
-			}
-		],
-		"keybindings": [
+			},
 			{
-				"command": "easySnippet.run",
-				"key": "ctrl+k shift+ctrl+s",
-				"mac": "cmd+k shift+cmd+s",
-				"when": "editorTextFocus"
+				"command": "snippetScopeExplorer.search",
+				"title": "Search Scope",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/search.svg",
+					"dark": "resources/dark/search.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.refresh",
+				"title": "Refresh Scope",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.addGroup",
+				"title": "Add Scope Group",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.addSnippet",
+				"title": "Add Scope Snippet",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.editGroup",
+				"title": "Edit Scope Group",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.deleteGroup",
+				"title": "Delete Scope Group",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/delete.svg",
+					"dark": "resources/dark/delete.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.deleteSnippet",
+				"title": "Delete Scope Snippet",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/delete.svg",
+					"dark": "resources/dark/delete.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.renameSnippet",
+				"title": "Rename Scope Snippet",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "snippetScopeExplorer.editSnippet",
+				"title": "Edit Scope Snippet",
+				"category": "Easy Snippet",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
 			}
 		],
+		"keybindings": [{
+			"command": "easySnippet.run",
+			"key": "ctrl+k shift+ctrl+s",
+			"mac": "cmd+k shift+cmd+s"
+		}],
 		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "snippet-explorer",
-					"title": "Snippet",
-					"icon": "media/snippet.svg"
-				}
-			]
+			"activitybar": [{
+				"id": "snippet-explorer",
+				"title": "Snippet",
+				"icon": "media/snippet.svg"
+			}]
 		},
 		"views": {
-			"snippet-explorer": [
-				{
+			"snippet-explorer": [{
 					"id": "snippetExplorer",
 					"name": "Snippet Manager"
+				},
+				{
+					"id": "snippetScopeExplorer",
+					"name": "Snippet Scope Manager"
 				}
 			]
 		},
 		"menus": {
-			"commandPalette": [
-				{
-					"command": "easySnippet.run",
-					"when": "editorHasSelection"
+			"commandPalette": [{
+					"command": "easySnippet.run"
 				},
 				{
-					"command": "snippetExplorer.addSnippet",
-					"when": "1 == 2"
+					"command": "snippetExplorer.addSnippet"
 				},
 				{
-					"command": "snippetExplorer.editGroup",
-					"when": "1 == 2"
+					"command": "snippetExplorer.editGroup"
 				},
 				{
-					"command": "snippetExplorer.deleteGroup",
-					"when": "1 == 2"
+					"command": "snippetExplorer.deleteGroup"
 				},
 				{
-					"command": "snippetExplorer.deleteSnippet",
-					"when": "1 == 2"
+					"command": "snippetExplorer.deleteSnippet"
 				},
 				{
-					"command": "snippetExplorer.editSnippet",
-					"when": "1 == 2"
+					"command": "snippetExplorer.renameSnippet"
+				},
+				{
+					"command": "snippetExplorer.editSnippet"
+				},
+				{
+					"command": "snippetScopeExplorer.addSnippet"
+				},
+				{
+					"command": "snippetScopeExplorer.editGroup"
+				},
+				{
+					"command": "snippetScopeExplorer.deleteGroup"
+				},
+				{
+					"command": "snippetScopeExplorer.deleteSnippet"
+				},
+				{
+					"command": "snippetScopeExplorer.renameSnippet"
+				},
+				{
+					"command": "snippetScopeExplorer.editSnippet"
 				}
 			],
-			"view/title": [
-				{
+			"view/title": [{
 					"command": "snippetExplorer.search",
 					"when": "view == snippetExplorer",
 					"group": "navigation"
@@ -176,10 +276,24 @@
 					"command": "snippetExplorer.addGroup",
 					"when": "view == snippetExplorer",
 					"group": "navigation"
+				},
+				{
+					"command": "snippetScopeExplorer.search",
+					"when": "view == snippetScopeExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "snippetScopeExplorer.refresh",
+					"when": "view == snippetScopeExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "snippetScopeExplorer.addGroup",
+					"when": "view == snippetScopeExplorer",
+					"group": "navigation"
 				}
 			],
-			"view/item/context": [
-				{
+			"view/item/context": [{
 					"command": "snippetExplorer.addSnippet",
 					"when": "view == snippetExplorer && viewItem == group",
 					"group": "inline@1"
@@ -197,9 +311,59 @@
 				{
 					"command": "snippetExplorer.deleteSnippet",
 					"when": "view == snippetExplorer && viewItem == snippet",
+					"group": "inline@1"
+				},
+				{
+					"command": "snippetExplorer.renameSnippet",
+					"when": "view == snippetExplorer && viewItem == snippet",
+					"group": "inline"
+				},
+				{
+					"command": "snippetScopeExplorer.addSnippet",
+					"when": "view == snippetScopeExplorer && viewItem == group",
+					"group": "inline@1"
+				},
+				{
+					"command": "snippetScopeExplorer.editGroup",
+					"when": "view == snippetScopeExplorer && viewItem == group",
+					"group": "inline@2"
+				},
+				{
+					"command": "snippetScopeExplorer.deleteGroup",
+					"when": "view == snippetScopeExplorer && viewItem == group",
+					"group": "inline@3"
+				},
+				{
+					"command": "snippetScopeExplorer.deleteSnippet",
+					"when": "view == snippetScopeExplorer && viewItem == snippet",
+					"group": "inline@1"
+				},
+				{
+					"command": "snippetScopeExplorer.renameSnippet",
+					"when": "view == snippetScopeExplorer && viewItem == snippet",
 					"group": "inline"
 				}
 			]
+		},
+		"configuration": {
+			"title": "EasySnippet",
+			"properties": {
+				"easySnippet.snippetsPath": {
+					"type": "string",
+					"default": "",
+					"description": "The folder path of the snippets. Must set when using custom profile\nsuch as: C:/Users/xxx/AppData/Roaming/Code/User/profiles/-1b688f00/snippets\n"
+				},
+				"easySnippet.lintDisableHeader": {
+					"type": "object",
+					"default": {
+						"javascript": "/* eslint-disable */",
+						"typescript": "/* eslint-disable */",
+						"javascriptreact": "/* eslint-disable */",
+						"typescriptreact": "/* eslint-disable */"
+					},
+					"description": "The Header to disable lint, {languageId: 'header'} \nsuch as {javascript: '/* eslint-disable */'}"
+				}
+			}
 		}
 	},
 	"scripts": {
@@ -209,12 +373,13 @@
 	"devDependencies": {
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^7.0.0",
+		"@types/vscode": "^1.32.2",
 		"mocha": "^3.5.0",
 		"typescript": "^2.5.2",
 		"vscode": "^1.1.30"
 	},
 	"dependencies": {
-		"@types/vscode": "^1.17.0"
+		"comment-json": "^4.2.3"
 	},
 	"repository": {
 		"type": "git",

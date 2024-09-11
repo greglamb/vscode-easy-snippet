@@ -8,8 +8,8 @@ another easy way to manage snippet
 - Easily edit and delete snippets once created
 - View, edit, and remove snippet groups from a dedicated snippet manager
 
-![1](media/screenshot.png)
-![2](media/screenshot.gif)
+![1](https://github.com/inu1255/vscode-easy-snippet/raw/HEAD/media/screenshot.png)
+![2](https://github.com/inu1255/vscode-easy-snippet/raw/HEAD/media/screenshot.gif)
 
 default keymaps `cmd+k shift+cmd+s`
 
